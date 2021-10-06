@@ -112,7 +112,5 @@ namespace OnBoardingIdentity.Models
         public DateTime Deadline { get; set; }
         public TaskState State { get; set; }
         public UserReturnModel Responsible { get; set; }
-
-        //TODO: maybe we need some project info here?
     }
 }

@@ -54,7 +54,7 @@ namespace OnBoardingIdentity.Infrastructure.Managers
             return await query.ToArrayAsync();
         }
 
-        public async Task<ApplicationTask[]> GetProjectTasks(string id, int projectId, bool includeRespInfo = false)
+        public async Task<ApplicationTask[]> GetProjectTasks(string id, int projectId,bool includeRespInfo = false)
         {
             IQueryable<ApplicationTask> query = _dbContext.Tasks;
 
@@ -66,7 +66,6 @@ namespace OnBoardingIdentity.Infrastructure.Managers
             query = query.Where(p => p.Project.ProjectManager.Id == id && p.Project.Id == projectId);
 
             return await query.ToArrayAsync();
-
         }
 
         public async Task<ApplicationTask> GetTaskDetailsAsync(string id, int taskId, bool includeRespInfo = false)

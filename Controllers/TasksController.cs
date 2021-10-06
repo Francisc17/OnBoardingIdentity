@@ -64,10 +64,72 @@ namespace OnBoardingIdentity.Controllers
         {
             try
             {
-                var result = await AppTaskManager.GetProgrammerTasks(User.Identity.GetUserId(), includeRespInfo);
+                var result = await AppTaskManager.GetProgrammerTasks(User.Identity.GetUserId(),includeRespInfo);
                 if (result == null) return NotFound();
 
                 return Ok(result.Select(c => { return TheModelFactory.Create(c); }).ToList());
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
+
+        [Route("api/user/tasks/{taskId:int}")]
+        [Authorize(Roles = "Programador, Gestor Projeto")]
+        [HttpGet]
+        public async Task<IHttpActionResult> GetTaskDetails(int taskId, bool includeRespInfo = false)
+        {
+            try
+            {
+                var result = await AppTaskManager.GetTaskDetailsAsync(User.Identity.GetUserId(), taskId, includeRespInfo);
+                if (result == null) return NotFound();
+
+                return Ok(TheModelFactory.Create(result));
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
+
+
+        [Route("api/user/project/{projId:int}/tasks")]
+        [Authorize(Roles = "Gestor Projeto")]
+        [HttpGet]
+        public async Task<IHttpActionResult> GetProjectTasks(int projId, bool includeRespInfo = false)
+        {
+            try
+            {
+                var result = await AppTaskManager.GetProjectTasks(User.Identity.GetUserId(), projId, includeRespInfo);
+                if (result == null) return NotFound();
+
+                return Ok(result.Select(c => { return TheModelFactory.Create(c); }).ToList());
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
+
+        [Route("api/user/tasks/{taskId:int}")]
+        [Authorize(Roles = "Gestor Projeto")]
+        [HttpDelete]
+        public async Task<IHttpActionResult> deleteTask(int taskId)
+        {
+            try
+            {
+                var result = await AppTaskManager.GetTaskDetailsAsync(User.Identity.GetUserId(), taskId);
+                if (result == null) return NotFound();
+
+                AppTaskManager.DeleteTask(result);
+
+                if (await AppTaskManager.SaveChangesAsync())
+                {
+                    return Ok();
+                }
+
+                return InternalServerError();
             }
             catch (Exception ex)
             {
