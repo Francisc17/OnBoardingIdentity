@@ -4,15 +4,15 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OnBoardingIdentity.Infrastructure.Data;
 using OnBoardingIdentity.Infrastructure.Data.Enums;
 
-namespace OnBoardingIdentity.Infrastructure.Data
+namespace OnBoardingIdentity.Models.TaskBindings
 {
-    public class ApplicationTask
+    public class CreateTaskBinding
     {
+        //TODO: Add error messages
         //TODO: Add verifications
-
-        public int Id { get; set; }
 
         [Required]
         public string TaskName { get; set; }
@@ -20,12 +20,11 @@ namespace OnBoardingIdentity.Infrastructure.Data
         [Required]
         public DateTime Deadline { get; set; }
 
+        [Required]
         public TaskState State { get; set; } = TaskState.Starting;
 
-        //it can be a task without a responsible yet
-        public ApplicationUser TaskResponsible { get; set; } = null;
-
-        [Required]
-        public ApplicationProject Project { get; set; }
+        //it is not required because it can be a task without a responsible
+        //The responsible can be added or associated after create the task
+        public string TaskResponsibleId { get; set; } = null;
     }
 }

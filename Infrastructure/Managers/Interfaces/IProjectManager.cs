@@ -9,7 +9,6 @@ namespace OnBoardingIdentity.Infrastructure.Managers.Interfaces
         void DeleteProject(ApplicationProject project);
         Task<ApplicationProject[]> GetAllUserProjectsAsync(string id, bool includeTasks = false, bool includePMInfo = false);
         Task<ApplicationProject> GetUserProjectAsync(string id, int projectId, bool includeTasks = false, bool includePMInfo = false);
-        void UpdateProject(string id, int projectId, ApplicationProject project);
         Task<bool> SaveChangesAsync();
 
     }

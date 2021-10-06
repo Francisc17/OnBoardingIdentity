@@ -135,6 +135,7 @@
     <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
+    <Compile Include="Controllers\TasksController.cs" />
     <Compile Include="Infrastructure\ApplicationDbContext.cs" />
     <Compile Include="Infrastructure\Managers\ApplicationProjectManager.cs" />
     <Compile Include="Infrastructure\Managers\IdentityManagers\ApplicationRoleManager.cs" />
@@ -145,27 +146,16 @@
     <Compile Include="Infrastructure\Data\Enums\TaskState.cs" />
     <Compile Include="Infrastructure\Managers\Interfaces\IProjectManager.cs" />
     <Compile Include="Infrastructure\Managers\Interfaces\ITaskManager.cs" />
-    <Compile Include="Migrations\202109301216586_InitialCreate.cs" />
-    <Compile Include="Migrations\202109301216586_InitialCreate.Designer.cs">
-      <DependentUpon>202109301216586_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202110011023013_allTables.cs" />
-    <Compile Include="Migrations\202110011023013_allTables.Designer.cs">
-      <DependentUpon>202110011023013_allTables.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202110011555430_ProjectsChange.cs" />
-    <Compile Include="Migrations\202110011555430_ProjectsChange.Designer.cs">
-      <DependentUpon>202110011555430_ProjectsChange.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202110011722059_x.cs" />
-    <Compile Include="Migrations\202110011722059_x.Designer.cs">
-      <DependentUpon>202110011722059_x.cs</DependentUpon>
+    <Compile Include="Migrations\202110061654440_firstRun.cs" />
+    <Compile Include="Migrations\202110061654440_firstRun.Designer.cs">
+      <DependentUpon>202110061654440_firstRun.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindings\ChangePasswordBindingModel.cs" />
     <Compile Include="Models\AccountBindings\CreateUserBindingModel.cs" />
     <Compile Include="Models\ModelFactory.cs" />
     <Compile Include="Models\ProjectBindings\CreateProjectBindingModel.cs" />
+    <Compile Include="Models\TaskBindings\CreateTaskBinding.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\CustomJwtFormat.cs" />
     <Compile Include="Providers\CustomOAuthProvider.cs" />
@@ -182,17 +172,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202109301216586_InitialCreate.resx">
-      <DependentUpon>202109301216586_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110011023013_allTables.resx">
-      <DependentUpon>202110011023013_allTables.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110011555430_ProjectsChange.resx">
-      <DependentUpon>202110011555430_ProjectsChange.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110011722059_x.resx">
-      <DependentUpon>202110011722059_x.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202110061654440_firstRun.resx">
+      <DependentUpon>202110061654440_firstRun.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

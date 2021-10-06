@@ -75,12 +75,6 @@ namespace OnBoardingIdentity.Infrastructure.Managers
             return await query.FirstOrDefaultAsync();
         }
 
-        public void UpdateProject(string id, int projectId, ApplicationProject project)
-        {
-            _dbContext.Project.Attach(project);
-            project.ProjectName = "xTask";
-        }
-
         public async Task<bool> SaveChangesAsync()
         {
             return (await _dbContext.SaveChangesAsync()) > 0;

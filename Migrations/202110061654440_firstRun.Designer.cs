@@ -7,13 +7,13 @@ namespace OnBoardingIdentity.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class ProjectsChange : IMigrationMetadata
+    public sealed partial class firstRun : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ProjectsChange));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(firstRun));
         
         string IMigrationMetadata.Id
         {
-            get { return "202110011555430_ProjectsChange"; }
+            get { return "202110061654440_firstRun"; }
         }
         
         string IMigrationMetadata.Source

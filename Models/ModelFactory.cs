@@ -63,15 +63,20 @@ namespace OnBoardingIdentity.Models
 
         public TaskReturnModel Create(ApplicationTask appTask)
         {
-            return new TaskReturnModel
+            var model = new TaskReturnModel
             {
                 //TODO: Implement URL like it is in users up there!
                 Id = appTask.Id,
                 TaskName = appTask.TaskName,
                 Deadline = appTask.Deadline,
                 State = appTask.State,
-                Responsible = this.Create(appTask.TaskResponsible)
+                Responsible = null
             };
+
+            if (appTask.TaskResponsible != null)
+                model.Responsible = this.Create(appTask.TaskResponsible);
+
+            return model;
         }
     }
 

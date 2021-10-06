@@ -89,14 +89,11 @@ C:\Users\franc\source\repos\OnBoardingIdentity\OnBoardingIdentity\obj\Debug\OnBo
 C:\Users\franc\source\repos\OnBoardingIdentity\OnBoardingIdentity\obj\Debug\OnBoardingIdentity.csproj.CopyComplete
 C:\Users\franc\source\repos\OnBoardingIdentity\OnBoardingIdentity\obj\Debug\OnBoardingIdentity.dll
 C:\Users\franc\source\repos\OnBoardingIdentity\OnBoardingIdentity\obj\Debug\OnBoardingIdentity.pdb
-C:\Users\franc\source\repos\OnBoardingIdentity\OnBoardingIdentity\obj\Debug\OnBoardingIdentity.Migrations.InitialCreate.resources
-C:\Users\franc\source\repos\OnBoardingIdentity\OnBoardingIdentity\obj\Debug\OnBoardingIdentity.csproj.GenerateResource.cache
 C:\Users\franc\source\repos\OnBoardingIdentity\OnBoardingIdentity\bin\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\franc\source\repos\OnBoardingIdentity\OnBoardingIdentity\bin\Thinktecture.IdentityModel.Core.dll
 C:\Users\franc\source\repos\OnBoardingIdentity\OnBoardingIdentity\bin\System.IdentityModel.Tokens.Jwt.xml
 C:\Users\franc\source\repos\OnBoardingIdentity\OnBoardingIdentity\bin\Thinktecture.IdentityModel.Core.pdb
 C:\Users\franc\source\repos\OnBoardingIdentity\OnBoardingIdentity\bin\Microsoft.Owin.Security.Jwt.dll
 C:\Users\franc\source\repos\OnBoardingIdentity\OnBoardingIdentity\bin\Microsoft.Owin.Security.Jwt.xml
-C:\Users\franc\source\repos\OnBoardingIdentity\OnBoardingIdentity\obj\Debug\OnBoardingIdentity.Migrations.allTables.resources
-C:\Users\franc\source\repos\OnBoardingIdentity\OnBoardingIdentity\obj\Debug\OnBoardingIdentity.Migrations.ProjectsChange.resources
-C:\Users\franc\source\repos\OnBoardingIdentity\OnBoardingIdentity\obj\Debug\OnBoardingIdentity.Migrations.x.resources
+C:\Users\franc\source\repos\OnBoardingIdentity\OnBoardingIdentity\obj\Debug\OnBoardingIdentity.Migrations.firstRun.resources
+C:\Users\franc\source\repos\OnBoardingIdentity\OnBoardingIdentity\obj\Debug\OnBoardingIdentity.csproj.GenerateResource.cache

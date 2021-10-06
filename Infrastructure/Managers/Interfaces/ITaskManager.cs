@@ -9,10 +9,11 @@ namespace OnBoardingIdentity.Infrastructure.Managers.Interfaces
 {
     public interface ITaskManager
     {
-        void AddTask(ApplicationTask task);
+        void AddTask(ApplicationTask task, ApplicationProject project, ApplicationUser user = null);
         void DeleteTask(ApplicationTask task);
-        Task<ApplicationTask[]> GetTaskDetailsAsync(int id, int projectId, int taskId);
+        Task<ApplicationTask[]> GetProgrammerTasks(string id, bool includeRespInfo = false);
+        Task<ApplicationTask> GetTaskDetailsAsync(string id, int taskId, bool includeRespInfo = false);
+        Task<ApplicationTask[]> GetProjectTasks(string id, int projectId, bool includeRespInfo = false);
         Task<bool> SaveChangesAsync();
-
     }
 }
