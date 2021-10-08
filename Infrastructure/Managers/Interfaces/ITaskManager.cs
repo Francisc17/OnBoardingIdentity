@@ -12,7 +12,7 @@ namespace OnBoardingIdentity.Infrastructure.Managers.Interfaces
         void AddTask(ApplicationTask task, ApplicationProject project, ApplicationUser user = null);
         void DeleteTask(ApplicationTask task);
         Task<ApplicationTask[]> GetProgrammerTasks(string id, bool includeRespInfo = false);
-        Task<ApplicationTask> GetTaskDetailsAsync(string id, int taskId, bool includeRespInfo = false);
+        Task<ApplicationTask> GetTaskDetailsAsync(string id, int taskId, bool includeRespInfo = false, bool includeProjInfo = false);
         Task<ApplicationTask[]> GetProjectTasks(string id, int projectId, bool includeRespInfo = false);
         Task<bool> SaveChangesAsync();
     }

@@ -14,7 +14,6 @@ namespace OnBoardingIdentity.Models
 {
     public class ModelFactory
     {
-
         private UrlHelper _UrlHelper;
         private ApplicationUserManager _AppUserManager;
 
@@ -76,6 +75,12 @@ namespace OnBoardingIdentity.Models
             if (appTask.TaskResponsible != null)
                 model.Responsible = this.Create(appTask.TaskResponsible);
 
+            if (appTask.Project != null)
+            {
+                model.projectId = appTask.Project.Id;
+                model.projectName = appTask.Project.ProjectName;
+            }
+                
             return model;
         }
     }
@@ -112,5 +117,9 @@ namespace OnBoardingIdentity.Models
         public DateTime Deadline { get; set; }
         public TaskState State { get; set; }
         public UserReturnModel Responsible { get; set; }
-    }
+
+        //project info
+
+        public int projectId { get; set; }
+        public string projectName { get; set; }    }
 }

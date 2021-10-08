@@ -68,13 +68,19 @@ namespace OnBoardingIdentity.Infrastructure.Managers
             return await query.ToArrayAsync();
         }
 
-        public async Task<ApplicationTask> GetTaskDetailsAsync(string id, int taskId, bool includeRespInfo = false)
+        public async Task<ApplicationTask> GetTaskDetailsAsync(string id, int taskId, bool includeRespInfo = false, 
+            bool includeProjInfo = false)
         {
             IQueryable<ApplicationTask> query = _dbContext.Tasks;
 
             if (includeRespInfo)
             {
                 query = query.Include(p => p.TaskResponsible);
+            }
+
+            if(includeProjInfo)
+            {
+                query = query.Include(p => p.Project);
             }
 
             //We can return results if either the respective project manager or task responsible is calling the endpoint

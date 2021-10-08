@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,7 @@ namespace OnBoardingIdentity.Controllers
     public class TasksController : BaseApiController
     {
         //create task
-        [Route("api/project/{projId:int}/tasks",Name = "CreateTask")]
+        [Route("api/project/{projId:int}/tasks", Name = "CreateTask")]
         [Authorize(Roles = "Gestor Projeto")]
         [HttpPost]
         public async Task<IHttpActionResult> CreateTask(int projId, CreateTaskBinding model)
@@ -35,7 +36,7 @@ namespace OnBoardingIdentity.Controllers
 
                 ApplicationUser user = null;
 
-                if(model.TaskResponsibleId != null)
+                if (model.TaskResponsibleId != null)
                 {
                     user = AppUserManager.FindById(model.TaskResponsibleId);
                     if (user == null) return NotFound();
@@ -64,7 +65,7 @@ namespace OnBoardingIdentity.Controllers
         {
             try
             {
-                var result = await AppTaskManager.GetProgrammerTasks(User.Identity.GetUserId(),includeRespInfo);
+                var result = await AppTaskManager.GetProgrammerTasks(User.Identity.GetUserId(), includeRespInfo);
                 if (result == null) return NotFound();
 
                 return Ok(result.Select(c => { return TheModelFactory.Create(c); }).ToList());
@@ -78,11 +79,11 @@ namespace OnBoardingIdentity.Controllers
         [Route("api/user/tasks/{taskId:int}")]
         [Authorize(Roles = "Programador, Gestor Projeto")]
         [HttpGet]
-        public async Task<IHttpActionResult> GetTaskDetails(int taskId, bool includeRespInfo = false)
+        public async Task<IHttpActionResult> GetTaskDetails(int taskId, bool includeRespInfo = false, bool includeProjInfo = false)
         {
             try
             {
-                var result = await AppTaskManager.GetTaskDetailsAsync(User.Identity.GetUserId(), taskId, includeRespInfo);
+                var result = await AppTaskManager.GetTaskDetailsAsync(User.Identity.GetUserId(), taskId, includeRespInfo, includeProjInfo);
                 if (result == null) return NotFound();
 
                 return Ok(TheModelFactory.Create(result));
@@ -127,6 +128,52 @@ namespace OnBoardingIdentity.Controllers
                 if (await AppTaskManager.SaveChangesAsync())
                 {
                     return Ok();
+                }
+
+                return InternalServerError();
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
+
+        [Route("api/user/tasks/{taskId:int}")]
+        [Authorize(Roles = "Gestor Projeto, Programador ")]
+        [HttpPut]
+        public async Task<IHttpActionResult> updateTask(int taskId, CreateTaskBinding model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                    return BadRequest();
+
+                var result = await AppTaskManager.GetTaskDetailsAsync(User.Identity.GetUserId(), taskId, true, true);
+                if (result == null) return NotFound();
+
+                result.TaskName = model.TaskName;
+                result.State = model.State;
+
+                /*
+                if (model.TaskResponsibleId != null)
+                    result.TaskResponsible = await AppUserManager.FindByIdAsync(model.TaskResponsibleId);
+                */
+                try
+                {
+                    if (await AppTaskManager.SaveChangesAsync())
+                    {
+                        return Ok(TheModelFactory.Create(result));
+                    }
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    foreach (var entityValidationErrors in ex.EntityValidationErrors)
+                    {
+                        foreach (var validationError in entityValidationErrors.ValidationErrors)
+                        {
+                            return BadRequest("Property: " + validationError.PropertyName + " Error: " + validationError.ErrorMessage);
+                        }
+                    }
                 }
 
                 return InternalServerError();
