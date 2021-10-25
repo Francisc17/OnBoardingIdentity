@@ -86,7 +86,6 @@ C:\Users\franc\source\repos\OnBoardingIdentity\OnBoardingIdentity\bin\System.Web
 C:\Users\franc\source\repos\OnBoardingIdentity\OnBoardingIdentity\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\franc\source\repos\OnBoardingIdentity\OnBoardingIdentity\obj\Debug\OnBoardingIdentity.csproj.AssemblyReference.cache
 C:\Users\franc\source\repos\OnBoardingIdentity\OnBoardingIdentity\obj\Debug\OnBoardingIdentity.csproj.CoreCompileInputs.cache
-C:\Users\franc\source\repos\OnBoardingIdentity\OnBoardingIdentity\obj\Debug\OnBoardingIdentity.csproj.CopyComplete
 C:\Users\franc\source\repos\OnBoardingIdentity\OnBoardingIdentity\obj\Debug\OnBoardingIdentity.dll
 C:\Users\franc\source\repos\OnBoardingIdentity\OnBoardingIdentity\obj\Debug\OnBoardingIdentity.pdb
 C:\Users\franc\source\repos\OnBoardingIdentity\OnBoardingIdentity\bin\System.IdentityModel.Tokens.Jwt.dll
@@ -97,3 +96,5 @@ C:\Users\franc\source\repos\OnBoardingIdentity\OnBoardingIdentity\bin\Microsoft.
 C:\Users\franc\source\repos\OnBoardingIdentity\OnBoardingIdentity\bin\Microsoft.Owin.Security.Jwt.xml
 C:\Users\franc\source\repos\OnBoardingIdentity\OnBoardingIdentity\obj\Debug\OnBoardingIdentity.Migrations.firstRun.resources
 C:\Users\franc\source\repos\OnBoardingIdentity\OnBoardingIdentity\obj\Debug\OnBoardingIdentity.csproj.GenerateResource.cache
+C:\Users\franc\source\repos\OnBoardingIdentity\OnBoardingIdentity\bin\System.Web.Http.Cors.dll
+C:\Users\franc\source\repos\OnBoardingIdentity\OnBoardingIdentity\bin\System.Web.Http.Cors.xml

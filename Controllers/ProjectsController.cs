@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using Microsoft.AspNet.Identity;
 using OnBoardingIdentity.Infrastructure.Data;
 using OnBoardingIdentity.Models.ProjectBindings;

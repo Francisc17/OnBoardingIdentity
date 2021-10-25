@@ -1,5 +1,6 @@
 ﻿using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using OnBoardingIdentity.Infrastructure;
@@ -8,6 +9,13 @@ using OnBoardingIdentity.Models;
 
 namespace OnBoardingIdentity.Controllers
 {
+    //SOLUTIONS TO CORS PROBLEM:
+    //https://stackoverflow.com/questions/18619656/enable-cors-in-web-api-2
+    //Mosharaf Hossain answer was first used but currently
+    //we are not using that.
+    //can be good comment the next line in the startup.cs
+    //app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class BaseApiController : ApiController
     {
         private ModelFactory _modelFactory;

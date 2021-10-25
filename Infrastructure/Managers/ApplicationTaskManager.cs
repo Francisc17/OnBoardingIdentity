@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,7 @@ namespace OnBoardingIdentity.Infrastructure.Managers
         }
         public void AddTask(ApplicationTask task, ApplicationProject project, ApplicationUser user = null)
         {
+            _dbContext.Entry(task).State = EntityState.Modified;
             _dbContext.Tasks.Add(task);
 
             //we need to attach and then equalize to get EF know
@@ -27,13 +29,17 @@ namespace OnBoardingIdentity.Infrastructure.Managers
 
             if (user != null)
             {
+                _dbContext.Entry(user).State = EntityState.Modified;
                 _dbContext.Users.Attach(user);
                 task.TaskResponsible = user;
             }
 
+            _dbContext.Entry(project).State = EntityState.Modified;
             _dbContext.Project.Attach(project);
             task.Project = project;
         }
+
+
 
         public void DeleteTask(ApplicationTask task)
         {

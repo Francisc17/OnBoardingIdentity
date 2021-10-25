@@ -20,6 +20,8 @@ namespace OnBoardingIdentity
     {
         public void Configuration(IAppBuilder app)
         {
+            //app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
+
             HttpConfiguration httpConfig = new HttpConfiguration();
 
             ConfigureOAuthTokenGeneration(app);
@@ -27,8 +29,6 @@ namespace OnBoardingIdentity
             ConfigureOAuthTokenConsumption(app);
 
             ConfigureWebApi(httpConfig);
-
-            app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
 
             app.UseWebApi(httpConfig);
 
@@ -78,6 +78,8 @@ namespace OnBoardingIdentity
 
         private void ConfigureWebApi(HttpConfiguration config)
         {
+            config.EnableCors();
+
             config.MapHttpAttributeRoutes();
 
             var jsonFormatter = config.Formatters.OfType<JsonMediaTypeFormatter>().First();

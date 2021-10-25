@@ -2,10 +2,13 @@
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using OnBoardingIdentity.Infrastructure.Data;
 using OnBoardingIdentity.Models;
 using OnBoardingIdentity.Models.AccountBindings;
+
 
 namespace OnBoardingIdentity.Controllers
 {
@@ -39,6 +42,27 @@ namespace OnBoardingIdentity.Controllers
 
 			return NotFound();
 
+		}
+
+		//get all programmers
+		[Authorize(Roles = "Gestor Projeto")]
+		[Route("role/{role}", Name = "GetUserByRole")]
+		[HttpGet]
+		public async Task<IHttpActionResult> GetUsersByRole(string role)
+		{
+			var users = this.AppUserManager.Users.ToList();
+			if (users == null || users.Count == 0)
+				return NotFound();
+
+
+			var roleUserIdsQuery = from roleDb in AppRoleManager.Roles
+								   where roleDb.Name == role
+								   from user in roleDb.Users
+								   select user.UserId;
+
+			var usersReturn = this.AppUserManager.Users.Where(u => roleUserIdsQuery.Contains(u.Id)).ToList().Select(u => this.TheModelFactory.Create(u));
+
+			return Ok(usersReturn);
 		}
 
 		//Search by username endpoint

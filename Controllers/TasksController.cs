@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using Microsoft.AspNet.Identity;
 using OnBoardingIdentity.Infrastructure.Data;
 using OnBoardingIdentity.Models.TaskBindings;
@@ -34,6 +35,8 @@ namespace OnBoardingIdentity.Controllers
                 var project = await AppProjectManager.GetUserProjectAsync(User.Identity.GetUserId(), projId, true);
                 if (project == null) return NotFound();
 
+                Console.WriteLine(project);
+
                 ApplicationUser user = null;
 
                 if (model.TaskResponsibleId != null)
@@ -52,6 +55,7 @@ namespace OnBoardingIdentity.Controllers
             }
             catch (Exception ex)
             {
+
                 return InternalServerError(ex);
             }
 
