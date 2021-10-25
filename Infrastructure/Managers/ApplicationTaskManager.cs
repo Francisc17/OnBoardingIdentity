@@ -20,26 +20,21 @@ namespace OnBoardingIdentity.Infrastructure.Managers
         }
         public void AddTask(ApplicationTask task, ApplicationProject project, ApplicationUser user = null)
         {
-            _dbContext.Entry(task).State = EntityState.Modified;
+            System.Diagnostics.Debug.WriteLine(_dbContext.Entry(task).State);
             _dbContext.Tasks.Add(task);
-
             //we need to attach and then equalize to get EF know
             //that we want an instance that already exists in database!
             //https://entityframework.net/knowledge-base/7884887/prevent-entity-framework-to-insert-values-for-navigational-properties
 
             if (user != null)
             {
-                _dbContext.Entry(user).State = EntityState.Modified;
                 _dbContext.Users.Attach(user);
                 task.TaskResponsible = user;
             }
 
-            _dbContext.Entry(project).State = EntityState.Modified;
             _dbContext.Project.Attach(project);
             task.Project = project;
         }
-
-
 
         public void DeleteTask(ApplicationTask task)
         {

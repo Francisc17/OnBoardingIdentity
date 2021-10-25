@@ -32,7 +32,7 @@ namespace OnBoardingIdentity.Controllers
                     State = model.State
                 };
 
-                var project = await AppProjectManager.GetUserProjectAsync(User.Identity.GetUserId(), projId, true);
+                var project = await AppProjectManager.GetUserProjectAsync(User.Identity.GetUserId(), projId, false);
                 if (project == null) return NotFound();
 
                 Console.WriteLine(project);

@@ -44,29 +44,29 @@ namespace OnBoardingIdentity.Controllers
 
 		}
 
-		//get all programmers
-		[Authorize(Roles = "Gestor Projeto")]
-		[Route("role/{role}", Name = "GetUserByRole")]
-		[HttpGet]
-		public async Task<IHttpActionResult> GetUsersByRole(string role)
-		{
-			var users = this.AppUserManager.Users.ToList();
-			if (users == null || users.Count == 0)
-				return NotFound();
+        //get all programmers
+        [Authorize(Roles = "Gestor Projeto")]
+        [Route("role/{role}", Name = "GetUserByRole")]
+        [HttpGet]
+        public IHttpActionResult GetUsersByRole(string role)
+        {
+            var users = this.AppUserManager.Users.ToList();
+            if (users == null || users.Count == 0)
+                return NotFound();
 
 
-			var roleUserIdsQuery = from roleDb in AppRoleManager.Roles
-								   where roleDb.Name == role
-								   from user in roleDb.Users
-								   select user.UserId;
+            var roleUserIdsQuery = from roleDb in AppRoleManager.Roles
+                                   where roleDb.Name == role
+                                   from user in roleDb.Users
+                                   select user.UserId;
 
-			var usersReturn = this.AppUserManager.Users.Where(u => roleUserIdsQuery.Contains(u.Id)).ToList().Select(u => this.TheModelFactory.Create(u));
+            var usersReturn = this.AppUserManager.Users.Where(u => roleUserIdsQuery.Contains(u.Id)).ToList().Select(u => this.TheModelFactory.Create(u));
 
-			return Ok(usersReturn);
-		}
+            return Ok(usersReturn);
+        }
 
-		//Search by username endpoint
-		[Authorize(Roles = "Gestor Projeto")]
+        //Search by username endpoint
+        [Authorize(Roles = "Gestor Projeto")]
 		[Route("{username}")]
 		[HttpGet]
 		public async Task<IHttpActionResult> GetUserByName(string username)
@@ -99,6 +99,8 @@ namespace OnBoardingIdentity.Controllers
 				LastName = createUserModel.LastName,
 				Level = 3,
 				JoinDate = DateTime.Now.Date,
+				//we could setup an email verification, for now i will leave it here
+				EmailConfirmed = true
 			};
 
 			IdentityResult addUserResult = await this.AppUserManager.CreateAsync(user, createUserModel.Password);

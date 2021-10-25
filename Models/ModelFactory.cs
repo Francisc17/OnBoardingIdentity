@@ -68,7 +68,7 @@ namespace OnBoardingIdentity.Models
                 Id = appTask.Id,
                 TaskName = appTask.TaskName,
                 Deadline = appTask.Deadline,
-                State = appTask.State,
+                State = appTask.State.ToString(),
                 Responsible = null
             };
 
@@ -115,7 +115,7 @@ namespace OnBoardingIdentity.Models
         public int Id { get; set; }
         public string TaskName { get; set; }
         public DateTime Deadline { get; set; }
-        public TaskState State { get; set; }
+        public string State { get; set; }
         public UserReturnModel Responsible { get; set; }
 
         //project info

@@ -27,8 +27,8 @@ namespace OnBoardingIdentity.Infrastructure
             appUserManager.UserValidator = new UserValidator<ApplicationUser>(appUserManager)
             {
                 AllowOnlyAlphanumericUserNames = true,
-                RequireUniqueEmail = true
-            };
+                RequireUniqueEmail = true,
+        };
 
             //Configure validation logic for passwords
             appUserManager.PasswordValidator = new PasswordValidator
