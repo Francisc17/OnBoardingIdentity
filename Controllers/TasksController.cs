@@ -158,10 +158,6 @@ namespace OnBoardingIdentity.Controllers
                 result.TaskName = model.TaskName;
                 result.State = model.State;
 
-                /*
-                if (model.TaskResponsibleId != null)
-                    result.TaskResponsible = await AppUserManager.FindByIdAsync(model.TaskResponsibleId);
-                */
                 try
                 {
                     if (await AppTaskManager.SaveChangesAsync())
@@ -188,4 +184,4 @@ namespace OnBoardingIdentity.Controllers
             }
         }
     }
-}
+ }

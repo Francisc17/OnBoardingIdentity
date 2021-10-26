@@ -150,20 +150,15 @@ namespace OnBoardingIdentity.Controllers
 
                 //AppProjectManager.UpdateProject(User.Identity.GetUserId(), projectId, result);
 
-                    if (await AppProjectManager.SaveChangesAsync())
-                    {
-                        return Ok(TheModelFactory.Create(result));
-                    }
-
-                return InternalServerError();                
+                await AppProjectManager.SaveChangesAsync();
+                    
+                return Ok(TheModelFactory.Create(result));
 
             }
             catch (Exception ex)
             {
                 return InternalServerError(ex);
             }
-
-
         }
     }
 }
